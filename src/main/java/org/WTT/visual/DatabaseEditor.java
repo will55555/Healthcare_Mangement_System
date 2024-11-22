@@ -26,6 +26,7 @@ public class DatabaseEditor extends JFrame {
     private JButton findbyidButton;
     private JButton updatebutton;
     private JButton deletebutton;
+
     private JButton addPatientButton;
     private JButton displayPatientsbutton;
     private JButton findpatientButton;
