@@ -1,5 +1,8 @@
 package org.WTT.visual;
 
+import org.WTT.configuration.DatabaseConnection;
+import org.WTT.entity.Nurses;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -32,8 +35,10 @@ public class DatabaseEditor extends JFrame {
     private JButton findpatientButton;
     private JButton updatePatientButton;
     private JButton deletePatientButton;
+    private static Connection con;
 
     public DatabaseEditor() {
+        con = DatabaseConnection.getConnection();
         // GUI Setup
         setContentPane(mainPanel);
         setTitle("Nurse and Patient UI");
@@ -100,6 +105,25 @@ public class DatabaseEditor extends JFrame {
                 JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
             }
         });
+        //update nurse
+        try {
+            String sql = "UPDATE Nurses SET First_Name = ?, Last_name = ?, Nurse_License_Type = ?, " +
+                    "License_Expiration_Date = ?, Certification_Type = ?, Certification_Expiration_Date = ?, " +
+                    "email = ? WHERE user_id = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            StringBuilder nurses = new StringBuilder();
+            Nurses nurse = new Nurses();
+            statement.setString(1, nurse.getFirstN());
+            statement.setString(2, nurse.getLastN());
+            statement.setString(3, nurse.getNurseLicense());
+            statement.setString(4, nurse.getLicenseExpDate());
+            statement.setString(5, nurse.getCertification());
+            statement.setString(6, nurse.getCertExpDate());
+            statement.setString(7, nurse.getEmail());
+            //statement.executeUpdate();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
+        };
 
 
     }
@@ -137,6 +161,7 @@ public class DatabaseEditor extends JFrame {
         deletebutton = new JButton("Delete Nurse");
 
         // Add components to mainPanel
+
         mainPanel.add(firstNameL);
         mainPanel.add(firstNTextField);
         mainPanel.add(lastNameL);
@@ -158,6 +183,8 @@ public class DatabaseEditor extends JFrame {
         mainPanel.add(findbyidButton);
         mainPanel.add(updatebutton);
         mainPanel.add(deletebutton);
+
+
     }
 
 
