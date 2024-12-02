@@ -8,17 +8,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection implements AutoCloseable{
-    //String dbURL = "jdbc:mysql://localhost:3306/mydb";//database url
-    //String username = "root";
-    //String password = "5945";
     private static Connection con;
 
 
  public static Connection getConnection(){
   //geeksForGeeks modified code
+  //Check if connection is valid
   try {
    con = DriverManager.getConnection(
-           "jdbc:mysql://localhost:3306/test_db", "root",
+           "jdbc:mysql://localhost:3306/nurses_db", "root",
            "5945");
    System.out.println("Connection established.");
   }
@@ -29,31 +27,6 @@ public class DatabaseConnection implements AutoCloseable{
 
      return con;
  }
- /*public static Connection getConnection() {
-  try {
-   // Replace these with your actual database details
-   String url = "jdbc:mysql://localhost:3306/test_db";
-   String user = "root";
-   String password = "5945";
-
-   Connection connection = DriverManager.getConnection(url, user, password);
-
-   // Check if connection is valid
-   if (connection != null && connection.isValid(2)) {
-    return connection;
-   }
-  } catch (SQLException e) {
-   e.printStackTrace();
-  }
-  return null; // In case of an error, return null
- }
- *
-  */
-
-
-
-
-
 
 
  @Override

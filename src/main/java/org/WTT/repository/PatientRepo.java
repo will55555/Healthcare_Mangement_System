@@ -15,7 +15,7 @@ public class PatientRepo {
         con = DatabaseConnection.getConnection();
     }
 
-    public void newPatient(Patient patient) {
+    public boolean newPatient(Patient patient) {
         //Creates new record  by using the connection object to create a new record in the database.
         String sql = "INSERT INTO patients (patient_id, First_Name, Last_name,Admission_Date, Date_of_birth, email) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
@@ -29,12 +29,12 @@ public class PatientRepo {
             System.out.println("Setting patient last name: " + patient.getLastN());
             statement.setString(3, patient.getLastN());
             System.out.println("Setting patient DOB: " + patient.getPatientDob());
-            statement.setString(5, patient.getPatientDob());// reading as 4
+            statement.setString(4, patient.getPatientDob());// reading as 4
 
             System.out.println("Setting patient admission date: " + patient.getAdmissionDate());
-            statement.setString(7, patient.getAdmissionDate());
+            statement.setString(5, patient.getAdmissionDate());
             System.out.println("Setting email: " + patient.getEmail());
-            statement.setString(8, patient.getEmail());
+            statement.setString(6, patient.getEmail());
 
             statement.executeUpdate();
             int row = statement.executeUpdate();
@@ -47,6 +47,7 @@ public class PatientRepo {
             System.out.println(e.getMessage());
         }
 
+        return false;
     }
 
     public List<Patient> findPatient() {
@@ -60,8 +61,8 @@ public class PatientRepo {
                 patients.setPatientId(resultSet.getInt("patient_id"));
                 patients.setFirstN(resultSet.getString("First_Name"));
                 patients.setLastN(resultSet.getString("Last_name"));
-                patients.setPatientDob(resultSet.getString("patient_License_Type"));
-                patients.setAdmissionDate(resultSet.getString("Certification_Type"));
+                patients.setPatientDob(resultSet.getString("date_of_birth"));
+                patients.setAdmissionDate(resultSet.getString("admission_date"));
                 patients.setEmail(resultSet.getString("email"));
                 patient.add(patients);
                 //int columnsNumber = resultSet.getColumnCount();
@@ -77,9 +78,7 @@ public class PatientRepo {
                 System.out.println("---------------------------");
             }
             // Close the resources
-            resultSet.close();
-            statement.close();
-            con.close();
+            //con.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -91,7 +90,7 @@ public class PatientRepo {
 
     public Patient findById(int id) {
         Patient patient = null;
-        String sql = "SELECT * FROM Patient WHERE patient_id = ?";
+        String sql = "SELECT * FROM Patients WHERE patient_id = ?";
         try (PreparedStatement statement = con.prepareStatement(sql)){
             statement.setLong(1, id );
             try(ResultSet resultSet = statement.executeQuery()) {
@@ -100,10 +99,10 @@ public class PatientRepo {
                 patient.setPatientId(resultSet.getInt("patient_id"));
                 patient.setFirstN(resultSet.getString("First_Name"));
                 patient.setLastN(resultSet.getString("Last_name"));
-                patient.setPatientDob(resultSet.getString("patient_License_Type"));
-
-                patient.setAdmissionDate(resultSet.getString("Certification_Expiration_Date"));
+                patient.setPatientDob(resultSet.getString("date_of_birth"));
+                patient.setAdmissionDate(resultSet.getString("admission_date"));
                 patient.setEmail(resultSet.getString("email"));
+                //patient.add(patients);
                 // Displaying patient details in the console
                 // Display each record
                 System.out.println("patient ID: " + patient.getPatientId());
@@ -121,17 +120,17 @@ public class PatientRepo {
         }
         return patient;
     }
-    public Patient update (Patient patient){
+    public void update (Patient patient){
         //Update record in database using an SQL UPDATE statement and execute it using the connection object.
         try {
-            String sql = "UPDATE Patient SET (patient_id, First_Name, Last_name,Admission_Date, Date_of_birth, email)";
+            String sql = "UPDATE Patients SET (patient_id, First_Name, Last_name,Admission_Date, Date_of_birth, email)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, patient.getFirstN());
             statement.setString(2, patient.getLastN());
             statement.setString(3, patient.getPatientDob());
             statement.setString(4, patient.getAdmissionDate());
 
-            statement.setString(7, patient.getEmail());
+            statement.setString(5, patient.getEmail());
 
             statement.executeUpdate();
             // Displaying patient details in the console
@@ -151,12 +150,11 @@ public class PatientRepo {
             System.out.println(e.getMessage());
         }
 
-        return patient;
     }
     public void deleteId (int id){
         //Deletes record using an SQL DELETE statement and execute it using the connection object.
         try {
-            String sql = "DELETE FROM Patient WHERE patient_id = ?";
+            String sql = "DELETE FROM Patients WHERE patient_id = ?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, id);
             statement.executeUpdate();

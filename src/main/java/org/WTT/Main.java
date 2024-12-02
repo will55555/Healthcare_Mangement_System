@@ -1,7 +1,9 @@
 package org.WTT;
 import org.WTT.configuration.DatabaseConnection;
 import org.WTT.entity.Nurses;
+import org.WTT.entity.Patient;
 import org.WTT.repository.NursesRepository;
+import org.WTT.repository.PatientRepo;
 import org.WTT.visual.DatabaseEditor;
 
 import javax.swing.*;
@@ -10,50 +12,59 @@ import java.util.Scanner;
 
 
 
-public class Main extends JFrame{
+public class Main extends JFrame {
 
     public static void main(String[] args) {
 
 
         try {
-            if(DatabaseConnection.getConnection().isValid(30)){
+            if (DatabaseConnection.getConnection().isValid(30)) {
                 System.out.println("Database Connected");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         Nurses nurse = new Nurses();
+        Patient patient = new Patient();
         NursesRepository nursesRepository = new NursesRepository();
+        PatientRepo patientRepository = new PatientRepo();
 
 
-
+        Scanner input = new Scanner(System.in);
         while (true) {
-            Scanner input = new Scanner(System.in);
-
             System.out.println("hello how would you like to use program:");
             System.out.println("1- UI ");
             System.out.println("2- Terminal");
+            System.out.println("3- exit program");
             int environmentChoice = input.nextInt();
-            if(environmentChoice==1)
-            {
-                DatabaseEditor GUI = new DatabaseEditor();
 
-        }
-            if (environmentChoice ==2) {
+
+            //
+            if (environmentChoice == 1) {
+                new DatabaseEditor();
+            }  else if (environmentChoice == 2) {
+                //switch (environmentChoice) {
+                //case 1:
+
                 System.out.println("""
-                    *==========Horrorcore-Software==========*
-                    |   Welcome to the Alien Management     |
-                    |         System                        |
-                    | The following options are available   |
-                    | for use                               |
-                    | 1) Add nurse                          |
-                    | 2) display all nurses                |
-                    | 3) Find nurse by id                   |
-                    | 4) Update nurse record                |
-                    | 5) Delete nurse record                |
-                    | 6) Exist the program                  |
-                    *=======================================*
-                    """);
+                        *=Nurse-patient-management-app==========*
+                        |   Welcome to the nurse and patient    |
+                        |         Management System             |
+                        |  The following options are available  |
+                        | 1) Add new nurse                      |
+                        | 2) Add patient                        |
+                        | 3) display all nurses                 |
+                        | 4) display all patients               |
+                        | 5) Find nurse by id                   |
+                        | 6) Find patient by id                 |
+                        | 7) Update nurse record                |
+                        | 8) Update patient record              |
+                        | 9) Delete nurse record                |
+                        | 10) Delete patient record              |
+                        | 11) Nurse/patient assignment          |
+                        | 12) Exit the program                  |
+                        *=======================================*
+                        """);
 
                 input = new Scanner(System.in);
                 int answer = input.nextInt();
@@ -89,7 +100,7 @@ public class Main extends JFrame{
                         System.out.println("Enter email: ");
                         nurse.setEmail(input.nextLine());
 
-                        //input.nextLine();
+
                         //Nurses nurse = new Nurses();
                         nurse = new Nurses(nurse.getUserId(),
                                 nurse.getFirstN(),
@@ -100,116 +111,193 @@ public class Main extends JFrame{
                                 nurse.getCertExpDate(),
                                 nurse.getEmail());
 
-                        //nursesRepository.newNurse(nurse);
+
+                        nursesRepository.newNurse(nurse);
 
                         nursesRepository.findNurses().forEach(System.out::println);
 
 
                         break;
-
                     case 2:
+                        input.nextLine();
+                        System.out.println("Setting patient ID: ");
+                        patient.setPatientId(input.nextInt());
+
+                        input.nextLine();
+                        System.out.println("Enter Patient first name: ");// replace with getFirstN
+                        patient.setFirstN(input.nextLine()); // first name
+                        System.out.println("Enter patient last name: ");
+                        patient.setLastN(input.nextLine()); // last name
+                        System.out.println("Enter patient date of birth: ");
+                        patient.setPatientDob(input.nextLine());
+
+                        //input.nextLine();
+                        System.out.println("Enter admission date: ");
+                        patient.setAdmissionDate(input.nextLine());
+                        //input.nextLine();
+                        System.out.println("Enter email: ");
+                        patient.setEmail(input.nextLine());
+
+
+                        //Nurses nurse = new Nurses();
+
+
+                        patientRepository.newPatient(patient);
+
+                        patientRepository.findPatient().forEach(System.out::println);
+
+
+                        break;
+
+                    case 3:
 
 
                         nursesRepository.findNurses().forEach(System.out::println);// table data visualization
                         nursesRepository.findNurses();
                         break;
-                    case 3:
+                    case 4:
+
+
+                        //patientRepository.findPatient().forEach(System.out::println);// table data visualization
+                        patientRepository.findPatient();
+                        break;
+                    case 5:
 
                         System.out.println("Enter user id of nurse you want to find: ");
 
                         nurse.setUserId(input.nextInt());
-                        //input.nextLine();
 
 
-                        nursesRepository.findById(1);
-                        Nurses find = nursesRepository.findById(nurse.getUserId());
-                        break;
-                    case 4:
-                        //figure out the methodology for update
-                        System.out.println("Enter user id of nurse you want to update: ");
+                        nursesRepository.findById(patient.getPatientId());
 
-                        nurse.setUserId(input.nextInt());
-                        //input.nextLine();
-                        nursesRepository.findById(nurse.getUserId());
-
-                        //System.out.println("which would you like to edit: ");
-                        System.out.println("""
-                            *==========Horrorcore-Software==========*
-                            |   which would you like to edit:       |
-                            |                                       |
-                            | The following options are available   |
-                            | for use                               |
-                            | 1) first name                         |
-                            | 2) last name                          |
-                            | 3) license type                       |
-                            | 4) license expiration date            |
-                            | 5) certification type                 |
-                            | 6) certification exp date             |
-                            | 7) email address                      |
-                            *=======================================*
-                            """);
-                        Nurses update = nursesRepository.update(nurse);
-                        int updateChoice = input.nextInt();
-                        input.nextLine();
-                        if (updateChoice == 1) {
-                            System.out.println("Enter nurse first name: ");// replace with getFirstN
-                            update.setFirstN(input.nextLine()); // first na
-
-                        }
-
-                        if (updateChoice == 2) {
-                            System.out.println("Enter nurse last name: ");
-                            update.setLastN(input.nextLine()); // last name
-
-
-                        }
-                        if (updateChoice == 3) {
-                            System.out.println("Enter nurse license type: ");
-                            update.setNurseLicense(input.nextLine());// License type
-
-
-                        }
-                        if (updateChoice == 4) {
-                            //input.nextLine();
-                            System.out.println("Enter license exp date: ");
-                            update.setLicenseExpDate(input.nextLine());// license expiration date
-
-                        }
-                        if (updateChoice == 5) {
-                            //input.nextLine();
-                            System.out.println("Enter new certification type: ");
-                            update.setCertification(input.nextLine());// certification type
-                            //input.nextLine();
-                        }
-                        if (updateChoice == 6) {
-                            System.out.println("Enter cert exp date: ");
-                            update.setCertExpDate(input.nextLine());// certification expiration date
-
-
-                        }
-                        if (updateChoice == 7) {
-                            //input.nextLine();
-                            System.out.println("Enter email: ");
-                            update.setEmail(input.nextLine());
-                        }
-
-
-                        //nurse.setUserId(input.nextInt());
-                        //input.nextLine();
-
-
-                        //nursesRepository.update(nurse);
-                        break;
-                    case 5:
-                        int id = nurse.getUserId();
-                        System.out.println("enter user id to delete user:");
-                        nurse.setUserId(input.nextInt());
-                        input.nextLine();
-
-                        //Nurses delete =
-                        nursesRepository.deleteId(1);
                         break;
                     case 6:
+
+                        System.out.println("Enter user id of patient you want to find: ");
+
+                        patient.setPatientId(input.nextInt());
+
+
+                        patientRepository.findById(patient.getPatientId());
+
+                        break;
+                    case 7:
+
+                        System.out.println("Enter user id of nurse you want to update: ");
+                        int userId = input.nextInt();
+                        input.nextLine(); // Consume the newline character
+
+                        //Nurses update = new Nurses();
+                        nurse.setUserId(userId);
+
+                        nurse.setFirstN(input.nextLine());
+                        nurse.setLastN(input.nextLine());
+                        // Optional fields (uncomment if required)
+                        System.out.println("Enter nurse license type (or press Enter to skip): ");
+                        nurse.setNurseLicense(input.nextLine());
+                        if (!nurse.getNurseLicense().isEmpty()) {
+                            nurse.setNurseLicense(nurse.getNurseLicense());
+                        }
+
+                        System.out.println("Enter license expiration date (YYYY-MM-DD) (or press Enter to skip): ");
+                        nurse.setLicenseExpDate(input.nextLine());
+                        if (!nurse.getLicenseExpDate().isEmpty()) {
+                            nurse.setLicenseExpDate(nurse.getLicenseExpDate());
+                        }
+
+                        System.out.println("Enter certification type (or press Enter to skip): ");
+                        nurse.setCertification(input.nextLine());
+                        if (!nurse.getCertification().isEmpty()) {
+                            nurse.setCertification(nurse.getCertification());
+                        }
+
+                        System.out.println("Enter certification expiration date (YYYY-MM-DD) (or press Enter to skip): ");
+                        nurse.setCertExpDate(input.nextLine());
+                        if (!nurse.getCertExpDate().isEmpty()) {
+                            nurse.setCertExpDate(nurse.getCertExpDate());
+                        }
+
+                        System.out.println("Enter email address (or press Enter to skip): ");
+                        nurse.setEmail(input.nextLine());
+                        if (!nurse.getEmail().isEmpty()) {
+                            nurse.setEmail(nurse.getEmail());
+                        }
+
+// Update the nurse record in the repository
+                        nursesRepository.update(nurse);
+                        System.out.println("Nurse details updated successfully.");
+                        // displays updated nurse info
+                        nursesRepository.findById(nurse.getUserId());
+
+
+                        break;
+                    case 8:
+
+                        System.out.println("Enter user id of patient you want to update: ");
+                        int patientId = input.nextInt();
+                        input.nextLine(); // Consume the newline character
+
+                        //Nurses update = new Nurses();
+                        patient.setPatientId(patientId);
+
+                        patient.setFirstN(input.nextLine());
+                        patient.setLastN(input.nextLine());
+
+
+                        System.out.println("Enter admission date (YYYY-MM-DD) (or press Enter to skip): ");
+                        patient.setAdmissionDate(input.nextLine());
+                        if (!patient.getAdmissionDate().isEmpty()) {
+                            patient.setAdmissionDate(nurse.getLicenseExpDate());
+                        }
+
+
+                        System.out.println("Enter patient DOB (YYYY-MM-DD) (or press Enter to skip): ");
+                        patient.setPatientDob(input.nextLine());
+                        if (!patient.getPatientDob().isEmpty()) {
+                            patient.setPatientDob(nurse.getCertExpDate());
+                        }
+
+                        System.out.println("Enter email address (or press Enter to skip): ");
+                        patient.setEmail(input.nextLine());
+                        if (!patient.getEmail().isEmpty()) {
+                            patient.setEmail(nurse.getEmail());
+                        }
+
+// Update the nurse record in the repository
+                        patientRepository.update(patient);
+                        System.out.println("patient details updated successfully.");
+                        // displays updated nurse info
+                        patientRepository.findById(patient.getPatientId());
+
+
+                        break;
+                    case 9:
+
+                        System.out.println("enter user id to delete nurse record:");
+                        nurse.setUserId(input.nextInt());
+
+                        //Nurses delete =
+                        nursesRepository.deleteId(nurse.getUserId());
+                        //nursesRepository.findById(nurse.getUserId());
+                        break;
+                    case 10:
+                        System.out.println("enter user id to delete patient record:");
+                        patient.setPatientId(input.nextInt());
+
+                        //Nurses delete =
+                        patientRepository.deleteId(patient.getPatientId());
+                        //nursesRepository.findById(nurse.getUserId());
+                        break;
+                    case 11:
+                        //try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db", "root", "5945")) {
+                            NursesRepository assignment = new NursesRepository();
+                            assignment.assignNursesToPatients();
+                       // } catch (SQLException e) {
+                            //System.out.println("Connection failed: " + e.getMessage());
+                       // }
+
+                        break;
+                    case 12:
                         // Display message
                         System.out.println(
                                 "\nThank you for using the program. Goodbye!\n");
@@ -217,19 +305,23 @@ public class Main extends JFrame{
                         break;
                     default:
                         System.out.println("Please select an option from the menu");
-            }
+                }
 
 
+                //input.close();
 
-            }
-            else {System.out.println("please enter 1 or 3");}
+            } else if (environmentChoice ==3) {
+                System.out.println("\nGoodbye!\n");
+                System.exit(0);
 
-            //input.close();
-
+            } else System.out.println("please enter 1, 2, or 3");
         }
 
 
-            }
-        }
+
+       }
+
+    }
+
 
 
