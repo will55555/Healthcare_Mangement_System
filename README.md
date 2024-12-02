@@ -1,7 +1,65 @@
-1. Prerequisites
+1.1 Scope
+
+This document outlines the CRUD (Create, Read, Update, Delete) operations for managing Nurse and Patient data in a healthcare management system. The operations are performed using Java and JDBC to interact with a MySQL database. The implementation is designed to:
+
+    Support essential data operations for nurses and patients.
+    Enable assignment and tracking of nurses to patients.
+    Facilitate data entry, updates, and retrievals.
+    Ensure data integrity and prevent invalid inputs.
+
+This system serves as a backend and frontend solution for managing healthcare staff and patient information, suitable for small- to medium-scale medical institutions.
+1.2 Constraints
+
+    Database schema: The implementation assumes the existence of a predefined MySQL database schema with the following tables: Nurses, Patients, and NursePatientAssignment.
+    Unique constraints:
+        Nurses and patients must have unique email addresses.
+        The user_id and patient_id fields are primary keys and must be unique.
+    Data format:
+        Dates must follow the YYYY-MM-DD format for both input and storage.
+        The database fields are case-sensitive for string comparisons.
+    Database size:
+        The system is designed for small- to medium-scale institutions and may not be optimized for databases with millions of records.
+    Error handling:
+        Basic error handling is implemented. For production-grade applications, a more robust logging and error-handling mechanism is recommended.
+
+1.3 Assumptions
+
+    Pre-configured database:
+        The MySQL database (nurses_db) and required tables (Nurses, Patients, NursePatientAssignment) are already set up and configured.
+    Connection details:
+        The correct database credentials (username and password) are provided.
+    Data input:
+        Valid data is provided by the user for fields like dates, email addresses, and names.
+        Duplicate data, where constrained (e.g., email), will result in errors unless handled in the application layer.
+    Application usage:
+        The application is primarily accessed by administrative personnel responsible for managing nurse and patient records.
+    Java environment:
+        The system is running in a Java environment with the required dependencies (e.g., JDBC driver) installed.
+
+Constraints and Assumptions: Practical Application
+Category	Constraints	Assumptions
+Database	Schema must match the documented structure.	Database connection is stable and accessible.
+Input Data	Dates must use YYYY-MM-DD format; emails must follow valid email standards.	Users provide correct and complete data.
+Concurrency	Single-threaded operations; no concurrency handling implemented.	Operations are performed sequentially without simultaneous updates to the same records.
+Error Handling	Limited to logging SQLExceptions and console messages.	Administrators understand error messages and take corrective actions as needed.
+1.4 Scope Extensions
+
+Future extensions could include:
+
+    Advanced search and filtering:
+        Add functionality to query nurses and patients based on custom criteria (e.g., certifications, date of birth ranges).
+    Bulk operations:
+        Enable batch imports and exports for large datasets.
+    Role-based access control:
+        Implement user authentication and role-based permissions for secure data access.
+    Concurrency handling:
+        Support concurrent read/write operations with transaction management.
+    Integration with front-end UI:
+        Extend this backend solution to work with web-based user interface as it already has a GUI.
+1.5 Prerequisites
 
     Database setup:
-        Database: test_db
+        Database: nurses_db
         Tables:
             Nurses:
 
@@ -287,9 +345,50 @@ public void deleteId (int id){
 
         //return deleteId(id);
     }
+    
+3. Sources
+    Tutorials:
+    https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
+   
+    Oracle JDBC Documentation: Comprehensive documentation for JDBC API, covering database connectivity and SQL execution.
+    https://docs.oracle.com/javase/tutorial/jdbc/overview/index.html
+
+    MySQL Reference Manual: Official guide for MySQL, detailing SQL queries, table design, and foreign key constraints.
+    https://dev.mysql.com/doc/refman/8.0/en/
+
+    Random Assignments with Java Streams: Details on using Java Streams for efficient and readable coding practices.
+    https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+
+    PreparedStatement API Usage: Documentation explaining the use of PreparedStatement for executing parameterized SQL queries.
+    https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html
+
+    MySQL Foreign Key Constraints: Guide on setting up and using foreign key relationships in MySQL.
+    https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html
+
+    JDBC SQL Constraints: Overview of using constraints in SQL with JDBC.
+    https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html
+
+    ResultSet API Usage: Reference for navigating and processing SQL query results using JDBC.
+    https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSet.html
+
+    Best Practices in Healthcare Database Design: Insights into designing efficient healthcare database systems.
+    https://www.sciencedirect.com/topics/computer-science/database-design
+
+    Error Handling in JDBC: Best practices for catching and managing SQL errors in JDBC.
+    https://www.baeldung.com/java-jdbc-error-handling
+
+    Java Random Class: Documentation on using the Random class for generating pseudorandom values.
+    https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
+
+    Role-Based Assignment in Healthcare: Explores role-based workflows in healthcare IT systems.
+    https://www.healthit.gov
+
+    UI Design for Database Management Systems: User experience design guidelines for database management interfaces.
+    https://youtu.be/whF_Qm1epQ8?si=Vp6jZFSXobHCGW0N
+    https://www.nngroup.com/articles/database-design-ui/
 
 
-3. Additional Notes
+5. Additional Notes
 
     Error handling:
         Use detailed logging and exception handling for production-grade applications.
