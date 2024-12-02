@@ -99,21 +99,21 @@ public class DatabaseEditor extends JFrame {
                 nurse.setUserId(userId);
 
                 // Get and validate required fields
-                 firstName = firstNTextField.getText().trim();
+                firstName = firstNTextField.getText().trim();
                 if (firstName.isEmpty()) {
                     JOptionPane.showMessageDialog(DatabaseEditor.this, "First Name is required.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 nurse.setFirstN(firstName);
 
-                 lastName = lastNTextField.getText().trim();
+                lastName = lastNTextField.getText().trim();
                 if (lastName.isEmpty()) {
                     JOptionPane.showMessageDialog(DatabaseEditor.this, "Last Name is required.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 nurse.setLastN(lastName);
 
-                 email = emailTextField.getText().trim();
+                email = emailTextField.getText().trim();
                 if (email.isEmpty()) {
                     JOptionPane.showMessageDialog(DatabaseEditor.this, "Email is required.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
@@ -127,7 +127,7 @@ public class DatabaseEditor extends JFrame {
                 nurse.setCertExpDate(CertDateTextField.getText().trim());
 
                 // Save nurse to the database
-                 boolean success =nursesRepository.newNurse(nurse);
+                boolean success =nursesRepository.newNurse(nurse);
                 //con.close();
 
                 if (success) {
@@ -298,11 +298,11 @@ public class DatabaseEditor extends JFrame {
                 nurse.setCertExpDate(certDate);
                 String email = emailTextField.getText();
                 nurse.setEmail(email);
-           nursesRepository.update(nurse);
-               // con.close();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
-        }
+                nursesRepository.update(nurse);
+                // con.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
+            }
 
 
         });

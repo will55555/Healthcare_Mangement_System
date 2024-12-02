@@ -4,10 +4,10 @@ public class Nurses {
     private int userId;
     private String firstN; //first name
     private String lastN;//lastname
-    private String nurseLicense;//Licensetype
-    private String licenseExpDate;//licenseexpirationdate
-    private String certification;//certificationtype
-    private String certExpDate;//certificationexpirationdate
+    private String nurseLicense;//License type
+    private String licenseExpDate;//license expiration date
+    private String certification;//certification type
+    private String certExpDate;//certification expiration date
     private String email;
 
     public Nurses() {
