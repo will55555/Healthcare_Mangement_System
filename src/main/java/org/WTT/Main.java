@@ -47,7 +47,7 @@ public class Main extends JFrame {
                 //case 1:
 
                 System.out.println("""
-                        *=Nurse-patient-management-app==========*
+                        *=====Nurse-patient-management-app======*
                         |   Welcome to the nurse and patient    |
                         |         Management System             |
                         |  The following options are available  |
@@ -290,11 +290,11 @@ public class Main extends JFrame {
                         break;
                     case 11:
                         //try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db", "root", "5945")) {
-                            NursesRepository assignment = new NursesRepository();
-                            assignment.assignNursesToPatients();
-                       // } catch (SQLException e) {
-                            //System.out.println("Connection failed: " + e.getMessage());
-                       // }
+                        NursesRepository assignment = new NursesRepository();
+                        assignment.assignNursesToPatients();
+                        // } catch (SQLException e) {
+                        //System.out.println("Connection failed: " + e.getMessage());
+                        // }
 
                         break;
                     case 12:
@@ -319,9 +319,9 @@ public class Main extends JFrame {
 
 
 
-       }
-
     }
+
+}
 
 
 

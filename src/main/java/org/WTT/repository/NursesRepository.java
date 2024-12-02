@@ -1,8 +1,8 @@
 /*
-*This class Creates, reads, updates, and delete data in nurse database
-*Source 1: https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
-*Source 2: Binary Logic IT's Matthew code
-*   */
+ *This class Creates, reads, updates, and delete data in nurse database
+ *Source 1: https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
+ *Source 2: Binary Logic IT's Matthew code
+ *   */
 package org.WTT.repository;
 import org.WTT.configuration.DatabaseConnection;
 import org.WTT.entity.Nurses;
@@ -24,9 +24,9 @@ public class NursesRepository {
         //Creates new record  by using the connection object to create a new record in the database.
         // Add nurse to database
         try (
-             PreparedStatement statement = con.prepareStatement(
-                     "INSERT INTO Nurses (user_id, First_Name, Last_name, Nurse_License_Type, License_Expiration_Date," +
-                             " Certification_Type, Certification_Expiration_Date, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
+                PreparedStatement statement = con.prepareStatement(
+                        "INSERT INTO Nurses (user_id, First_Name, Last_name, Nurse_License_Type, License_Expiration_Date," +
+                                " Certification_Type, Certification_Expiration_Date, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
             System.out.println("Setting user ID: " + nurse.getUserId());
             statement.setInt(1, nurse.getUserId());
             System.out.println("Setting nurse first name: " + nurse.getFirstN());//
@@ -51,7 +51,7 @@ public class NursesRepository {
         return false;
     }
     public Object assignNursesToPatients() {
-       try { /*
+        try { /*
             // Fetch all nurses
             List<Integer> nurseIds = getIds("Nurses", "user_id");
 
