@@ -386,8 +386,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
     }
     
 **3. Sources**
-Tutorials:
 
+Tutorials:
 https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
    
 Oracle JDBC Documentation: Comprehensive documentation for JDBC API, covering database connectivity and SQL execution.
