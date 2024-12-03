@@ -1,8 +1,8 @@
 /*
- *This class Creates, reads, updates, and delete data in nurse database
- *Source 1: https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
- *Source 2: Binary Logic IT's Matthew code
- *   */
+*This class Creates, reads, updates, and delete data in nurse database
+*Source 1: https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
+*Source 2: Binary Logic IT's Matthew code
+*   */
 package org.WTT.repository;
 import org.WTT.configuration.DatabaseConnection;
 import org.WTT.entity.Nurses;
@@ -24,9 +24,9 @@ public class NursesRepository {
         //Creates new record  by using the connection object to create a new record in the database.
         // Add nurse to database
         try (
-                PreparedStatement statement = con.prepareStatement(
-                        "INSERT INTO Nurses (user_id, First_Name, Last_name, Nurse_License_Type, License_Expiration_Date," +
-                                " Certification_Type, Certification_Expiration_Date, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
+             PreparedStatement statement = con.prepareStatement(
+                     "INSERT INTO Nurses (user_id, First_Name, Last_name, Nurse_License_Type, License_Expiration_Date," +
+                             " Certification_Type, Certification_Expiration_Date, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
             System.out.println("Setting user ID: " + nurse.getUserId());
             statement.setInt(1, nurse.getUserId());
             System.out.println("Setting nurse first name: " + nurse.getFirstN());//
@@ -51,8 +51,7 @@ public class NursesRepository {
         return false;
     }
     public Object assignNursesToPatients() {
-        try {
-            /*
+       try { /*
             // Fetch all nurses
             List<Integer> nurseIds = getIds("Nurses", "user_id");
 
@@ -61,7 +60,7 @@ public class NursesRepository {
 
             if (nurseIds.isEmpty() || patientIds.isEmpty()) {
                 System.out.println("No nurses or patients available for assignment.");
-                return null;
+                return;
             }
 
             Random random = new Random();
@@ -71,15 +70,7 @@ public class NursesRepository {
 
                 // Assign nurse to patient
                 assignNurseToPatient(randomNurseId, patientId);
-                System.out.println("Nurses Assigned to Patients:");
-                System.out.println("----------------------------------------------------------------------------------------------------------------");
-                System.out.printf("%-10s %-20s %-20s %-10s %-20s %-20s%n",
-                        "Nurse ID", "Nurse First Name", "Nurse Last Name",
-                        "Patient ID", "Patient First Name", "Patient Last Name");
-                System.out.println("---------------------------------------------------------------------------------------------------------------");
-
             }*/
-
             String query = """
                 SELECT n.user_id, n.First_Name AS NurseFirstName, n.Last_name AS NurseLastName,
                        p.patient_id, p.First_Name AS PatientFirstName, p.Last_name AS PatientLastName
@@ -102,6 +93,7 @@ public class NursesRepository {
 
                 while (resultSet.next()) {
                     int nurseId = resultSet.getInt("user_id");
+                    System.out.println("Nurse ID:");
                     String nurseFirstName = resultSet.getString("NurseFirstName");
                     String nurseLastName = resultSet.getString("NurseLastName");
                     int patientId = resultSet.getInt("patient_id");
@@ -125,10 +117,6 @@ public class NursesRepository {
             System.out.println("Error during assignment: " + e.getMessage());
         }
 
-        return null;
-    }
-    public Object displayNursePatientAssignment(){
-        assignNursesToPatients();
         return null;
     }
 
