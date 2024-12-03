@@ -383,45 +383,46 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
     }
     
 **3. Sources**
-    Tutorials:
-    https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
+Tutorials:
+
+https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
    
-    Oracle JDBC Documentation: Comprehensive documentation for JDBC API, covering database connectivity and SQL execution.
-    https://docs.oracle.com/javase/tutorial/jdbc/overview/index.html
+Oracle JDBC Documentation: Comprehensive documentation for JDBC API, covering database connectivity and SQL execution.
+https://docs.oracle.com/javase/tutorial/jdbc/overview/index.html
 
-    MySQL Reference Manual: Official guide for MySQL, detailing SQL queries, table design, and foreign key constraints.
-    https://dev.mysql.com/doc/refman/8.0/en/
+MySQL Reference Manual: Official guide for MySQL, detailing SQL queries, table design, and foreign key constraints.
+https://dev.mysql.com/doc/refman/8.0/en/
 
-    Random Assignments with Java Streams: Details on using Java Streams for efficient and readable coding practices.
-    https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+Random Assignments with Java Streams: Details on using Java Streams for efficient and readable coding practices.
+https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
 
-    PreparedStatement API Usage: Documentation explaining the use of PreparedStatement for executing parameterized SQL queries.
-    https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html
+PreparedStatement API Usage: Documentation explaining the use of PreparedStatement for executing parameterized SQL queries.
+https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html
 
-    MySQL Foreign Key Constraints: Guide on setting up and using foreign key relationships in MySQL.
-    https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html
+MySQL Foreign Key Constraints: Guide on setting up and using foreign key relationships in MySQL.
+https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html
 
-    JDBC SQL Constraints: Overview of using constraints in SQL with JDBC.
-    https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html
+JDBC SQL Constraints: Overview of using constraints in SQL with JDBC.
+https://docs.oracle.com/javase/8/docs/api/java/sql/package-summary.html
 
-    ResultSet API Usage: Reference for navigating and processing SQL query results using JDBC.
-    https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSet.html
+ResultSet API Usage: Reference for navigating and processing SQL query results using JDBC.
+https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSet.html
 
-    Best Practices in Healthcare Database Design: Insights into designing efficient healthcare database systems.
-    https://www.sciencedirect.com/topics/computer-science/database-design
+Best Practices in Healthcare Database Design: Insights into designing efficient healthcare database systems.
+https://www.sciencedirect.com/topics/computer-science/database-design
 
-    Error Handling in JDBC: Best practices for catching and managing SQL errors in JDBC.
-    https://www.baeldung.com/java-jdbc-error-handling
+Error Handling in JDBC: Best practices for catching and managing SQL errors in JDBC.
+https://www.baeldung.com/java-jdbc-error-handling
 
-    Java Random Class: Documentation on using the Random class for generating pseudorandom values.
-    https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
+Java Random Class: Documentation on using the Random class for generating pseudorandom values.
+https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
 
-    Role-Based Assignment in Healthcare: Explores role-based workflows in healthcare IT systems.
-    https://www.healthit.gov
+Role-Based Assignment in Healthcare: Explores role-based workflows in healthcare IT systems.
+https://www.healthit.gov
 
-    UI Design for Database Management Systems: User experience design guidelines for database management interfaces.
-    https://youtu.be/whF_Qm1epQ8?si=Vp6jZFSXobHCGW0N
-    https://www.nngroup.com/articles/database-design-ui/
+UI Design for Database Management Systems: User experience design guidelines for database management interfaces.
+https://youtu.be/whF_Qm1epQ8?si=Vp6jZFSXobHCGW0N
+https://www.nngroup.com/articles/database-design-ui/
 
 **5. Additional Notes**
     Error handling:
