@@ -5,6 +5,7 @@ This document outlines the CRUD (Create, Read, Update, Delete) operations for ma
 The operations are performed using Java and JDBC to interact with a MySQL database. 
 
 The implementation is designed to:
+
       Support essential data operations for nurses and patients.
       
       Enable assignment and tracking of nurses to patients.
