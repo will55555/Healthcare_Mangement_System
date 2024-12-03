@@ -8,7 +8,6 @@ import org.WTT.repository.PatientRepo;
 
 
 import javax.swing.*;
-import java.awt.*;
 import java.sql.*;
 
 @SuppressWarnings("BoundFieldAssignment")
@@ -41,9 +40,9 @@ public class DatabaseEditor extends JFrame {
     private JButton findpatientButton;
     private JButton updatePatientButton;
     private JButton deletePatientButton;
-    private JLabel patientadminLabel;
+    //private JLabel patientadminLabel;
     private JTextField adminDatetextField;
-    private JLabel patientDoblabel;
+   // private JLabel patientDoblabel;
     private JTextField dobtextField;
     private JRadioButton nurseToPatientRadioButton;
     public static Connection con;
@@ -248,22 +247,11 @@ public class DatabaseEditor extends JFrame {
                 JOptionPane.showMessageDialog(DatabaseEditor.this, scrollPane, "Nurses Information", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
-            }/*
-            try{
-                //patient.getPatientId();
-
-                JOptionPane.showMessageDialog(null, nursesRepository.findNurses());} catch(Exception ex) {
-                JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
-            }*/
+            }
         });
         // Display Nurses
         displayPatientsbutton.addActionListener(e -> {
-            /*try{
-                //patient.getPatientId();
 
-                JOptionPane.showMessageDialog(null, patientRepo.findPatient());} catch(Exception ex) {
-                JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
-            }*/
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/nurses_db", "root",
                     "5945");
                  Statement stmt = connection.createStatement();
