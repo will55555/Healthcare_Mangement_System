@@ -119,6 +119,7 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 
 **2. CRUD Operations**
 **2.1 Create**
+
 Nurses
 
 
@@ -153,10 +154,11 @@ Nurses
         return false;
     }
 
+
 Patients
 
 
-public boolean newPatient(Patient patient) {
+   public boolean newPatient(Patient patient) {
         //Creates new record  by using the connection object to create a new record in the database.
         String sql = "INSERT INTO patients (patient_id, First_Name, Last_name,Admission_Date, Date_of_birth, email) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
@@ -195,7 +197,7 @@ public boolean newPatient(Patient patient) {
 Fetch all nurses
 
 
-public List<Nurses> findNurses() {
+   public List<Nurses> findNurses() {
         List<Nurses> nurses = new LinkedList<>();
 
         String sql = "SELECT * FROM Nurses";
