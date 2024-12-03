@@ -1,3 +1,6 @@
+# Healthcare_Mangement_System
+
+
 **1.1 Scope**
 
 This document outlines the CRUD (Create, Read, Update, Delete) operations for managing Nurse and Patient data in a healthcare management system. 
@@ -5,14 +8,10 @@ This document outlines the CRUD (Create, Read, Update, Delete) operations for ma
 The operations are performed using Java and JDBC to interact with a MySQL database. 
 
 The implementation is designed to:
-
-      Support essential data operations for nurses and patients.
-      
-      Enable assignment and tracking of nurses to patients.
-      
-      Facilitate data entry, updates, and retrievals.
-      
-      Ensure data integrity and prevent invalid inputs.
+Support essential data operations for nurses and patients.
+Enable assignment and tracking of nurses to patients.   
+Facilitate data entry, updates, and retrievals.   
+Ensure data integrity and prevent invalid inputs.
    
 This system serves as a backend and frontend solution for managing healthcare staff and patient information, suitable for small- to medium-scale medical institutions.
 
@@ -20,49 +19,55 @@ This system serves as a backend and frontend solution for managing healthcare st
 
 **1.2 Constraints**
 
-Database schema: 
-      The implementation assumes the existence of a predefined MySQL database schema with the following tables: Nurses, Patients, and NursePatientAssignment.
+**Database schema:**
+The implementation assumes the existence of a predefined MySQL database schema with the following tables: Nurses, Patients, and NursePatientAssignment.
       
-Unique constraints:
-
-      Nurses and patients must have unique email addresses.
+**Unique constraints:**
+Nurses and patients must have unique email addresses.
+The user_id and patient_id fields are primary keys and must be unique.
       
-      The user_id and patient_id fields are primary keys and must be unique.
+**Data format:**
+Dates must follow the YYYY-MM-DD format for both input and storage.
       
-Data format:
-
-      Dates must follow the YYYY-MM-DD format for both input and storage.
+The database fields are case-sensitive for string comparisons.
       
-      The database fields are case-sensitive for string comparisons.
+**Database size:**
+The system is designed for small- to medium-scale institutions and may not be optimized for databases with millions of records.
       
-Database size:
-      
-      The system is designed for small- to medium-scale institutions and may not be optimized for databases with millions of records.
-      
-Error handling:
-
-      Basic error handling is implemented. For production-grade applications, a more robust logging and error-handling mechanism is recommended.
+**Error handling:**
+Basic error handling is implemented. For production-grade applications, a more robust logging and error-handling mechanism is recommended.
 
 
 **1.3 Assumptions**
 
 **Pre-configured database:**
 The MySQL database (nurses_db) and required tables (Nurses, Patients, NursePatientAssignment) are already set up and configured.
+
 **Connection details:**
 The correct database credentials (username and password) are provided.
+
 **Data input:**
 Valid data is provided by the user for fields like dates, email addresses, and names.
 Duplicate data, where constrained (e.g., email), will result in errors unless handled in the application layer.
-Application usage:
+
+**Application usage:**
 The application is primarily accessed by administrative personnel responsible for managing nurse and patient records.
+
 **Java environment:**
 The system is running in a Java environment with the required dependencies (e.g., JDBC driver) installed.
 
-**Constraints and Assumptions:** Practical Application
+**Constraints and Assumptions:**
+
+Practical Application
+
 Category	Constraints	Assumptions
+
 Database	Schema must match the documented structure.	Database connection is stable and accessible.
+
 Input Data	Dates must use YYYY-MM-DD format; emails must follow valid email standards.	Users provide correct and complete data.
+
 Concurrency	Single-threaded operations; no concurrency handling implemented.	Operations are performed sequentially without simultaneous updates to the same records.
+
 Error Handling	Limited to logging SQLExceptions and console messages.	Administrators understand error messages and take corrective actions as needed.
 
 
