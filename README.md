@@ -7,6 +7,7 @@ This document outlines the CRUD (Create, Read, Update, Delete) operations for ma
     Ensure data integrity and prevent invalid inputs.
 
 This system serves as a backend and frontend solution for managing healthcare staff and patient information, suitable for small- to medium-scale medical institutions.
+
 1.2 Constraints
     Database schema: The implementation assumes the existence of a predefined MySQL database schema with the following tables: Nurses, Patients, and NursePatientAssignment.
     Unique constraints:Nurses and patients must have unique email addresses.
