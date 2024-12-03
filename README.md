@@ -62,8 +62,7 @@ Future extensions could include:
         Database: nurses_db
         Tables:
             Nurses:
-
-CREATE TABLE Nurses (
+            CREATE TABLE Nurses (
     nurse_id INT PRIMARY KEY AUTO_INCREMENT,
     First_Name VARCHAR(75) NOT NULL,
     Last_name VARCHAR(75) NOT NULL,
@@ -73,6 +72,8 @@ CREATE TABLE Nurses (
     Certification_Expiration_Date DATE,
     email VARCHAR(100) UNIQUE NOT NULL
 );
+
+
 
 Patients:
         CREATE TABLE Patients (
