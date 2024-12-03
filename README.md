@@ -65,7 +65,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 **1.4 Scope Extensions**
 
 **Future extensions could include:**
-      **advanced search and filtering:**
+
+**advanced search and filtering:**
         Add functionality to query nurses and patients based on custom criteria (e.g., certifications, date of birth ranges).
         
 **Bulk operations:**
@@ -73,9 +74,11 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
         
 **Role-based access control:**
         Implement user authentication and role-based permissions for secure data access.
-    **Concurrency handling:**
+        
+**Concurrency handling:**
         Support concurrent read/write operations with transaction management.
-    **Integration with front-end UI:**
+        
+**Integration with front-end UI:**
         Extend this backend solution to work with web-based user interface as it already has a GUI.
         
 **1.5 Prerequisites**
