@@ -1,7 +1,6 @@
 1.1 Scope
 
 This document outlines the CRUD (Create, Read, Update, Delete) operations for managing Nurse and Patient data in a healthcare management system. The operations are performed using Java and JDBC to interact with a MySQL database. The implementation is designed to:
-
     Support essential data operations for nurses and patients.
     Enable assignment and tracking of nurses to patients.
     Facilitate data entry, updates, and retrievals.
@@ -9,13 +8,10 @@ This document outlines the CRUD (Create, Read, Update, Delete) operations for ma
 
 This system serves as a backend and frontend solution for managing healthcare staff and patient information, suitable for small- to medium-scale medical institutions.
 1.2 Constraints
-
     Database schema: The implementation assumes the existence of a predefined MySQL database schema with the following tables: Nurses, Patients, and NursePatientAssignment.
-    Unique constraints:
-        Nurses and patients must have unique email addresses.
-        The user_id and patient_id fields are primary keys and must be unique.
-    Data format:
-        Dates must follow the YYYY-MM-DD format for both input and storage.
+    Unique constraints:Nurses and patients must have unique email addresses.
+    The user_id and patient_id fields are primary keys and must be unique.
+    Data format:Dates must follow the YYYY-MM-DD format for both input and storage.
         The database fields are case-sensitive for string comparisons.
     Database size:
         The system is designed for small- to medium-scale institutions and may not be optimized for databases with millions of records.
