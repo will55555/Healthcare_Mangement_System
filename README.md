@@ -22,16 +22,16 @@ Basic error handling is implemented. For production-grade applications, a more r
 
 **1.3 Assumptions**
 
-Pre-configured database:
+**Pre-configured database:**
 The MySQL database (nurses_db) and required tables (Nurses, Patients, NursePatientAssignment) are already set up and configured.
-Connection details:
+**Connection details:**
 The correct database credentials (username and password) are provided.
-Data input:
+**Data input:**
 Valid data is provided by the user for fields like dates, email addresses, and names.
 Duplicate data, where constrained (e.g., email), will result in errors unless handled in the application layer.
 Application usage:
 The application is primarily accessed by administrative personnel responsible for managing nurse and patient records.
-Java environment:
+**Java environment:**
 The system is running in a Java environment with the required dependencies (e.g., JDBC driver) installed.
 
 Constraints and Assumptions: Practical Application
@@ -41,25 +41,26 @@ Input Data	Dates must use YYYY-MM-DD format; emails must follow valid email stan
 Concurrency	Single-threaded operations; no concurrency handling implemented.	Operations are performed sequentially without simultaneous updates to the same records.
 Error Handling	Limited to logging SQLExceptions and console messages.	Administrators understand error messages and take corrective actions as needed.
 
-1.4 Scope Extensions
+**1.4 Scope Extensions**
 
-Future extensions could include:
+**Future extensions could include:**
 
-    Advanced search and filtering:
+    **Advanced search and filtering:**
         Add functionality to query nurses and patients based on custom criteria (e.g., certifications, date of birth ranges).
-    Bulk operations:
+    **Bulk operations:**
         Enable batch imports and exports for large datasets.
-    Role-based access control:
+    **Role-based access control:**
         Implement user authentication and role-based permissions for secure data access.
-    Concurrency handling:
+    **Concurrency handling:**
         Support concurrent read/write operations with transaction management.
-    Integration with front-end UI:
+    **Integration with front-end UI:**
         Extend this backend solution to work with web-based user interface as it already has a GUI.
-1.5 Prerequisites
+        
+**1.5 Prerequisites**
 
-    Database setup:
-        Database: nurses_db
-        Tables:
+    **Database setup:**
+        **Database:** nurses_db
+       ** Tables:**
             Nurses:
             CREATE TABLE Nurses (
     nurse_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -74,7 +75,7 @@ Future extensions could include:
 
 
 
-Patients:
+**Patients:**
         CREATE TABLE Patients (
     patient_id INT PRIMARY KEY AUTO_INCREMENT,
     First_Name VARCHAR(75) NOT NULL,
@@ -84,7 +85,7 @@ Patients:
     email VARCHAR(100) UNIQUE NOT NULL
 );
 
-NursePatientAssignment:
+**NursePatientAssignment:**
 
         CREATE TABLE NursePatientAssignment (
             assignment_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -94,7 +95,7 @@ NursePatientAssignment:
             FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
         );
 
-Dependencies:
+**Dependencies:**
 
     Add the MySQL JDBC driver to your project:
 
@@ -104,7 +105,7 @@ Dependencies:
         <version>8.0.31</version>
     </dependency>
 
-Database connection setup:
+**Database connection setup:**
 
     Update connection details in the code:
 
@@ -112,8 +113,8 @@ Database connection setup:
         String user = "root";
         String password = "yourpassword";
 
-2. CRUD Operations
-2.1 Create
+**2. CRUD Operations**
+**2.1 Create**
 Nurses
         public boolean newNurse(Nurses nurse) {
         //Creates new record  by using the connection object to create a new record in the database.
