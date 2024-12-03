@@ -368,8 +368,7 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 
 **2.5 Delete patient by ID**
 
-
-   public void deleteId (int id){
+         public void deleteId (int id){
         //Deletes record using an SQL DELETE statement and execute it using the connection object.
         try {
             String sql = "DELETE FROM Patients WHERE patient_id = ?";
