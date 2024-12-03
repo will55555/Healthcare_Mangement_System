@@ -16,6 +16,8 @@ The implementation is designed to:
    
 This system serves as a backend and frontend solution for managing healthcare staff and patient information, suitable for small- to medium-scale medical institutions.
 
+
+
 **1.2 Constraints**
 
 Database schema: 
@@ -41,6 +43,7 @@ Error handling:
 
       Basic error handling is implemented. For production-grade applications, a more robust logging and error-handling mechanism is recommended.
 
+
 **1.3 Assumptions**
 
 **Pre-configured database:**
@@ -62,6 +65,7 @@ Input Data	Dates must use YYYY-MM-DD format; emails must follow valid email stan
 Concurrency	Single-threaded operations; no concurrency handling implemented.	Operations are performed sequentially without simultaneous updates to the same records.
 Error Handling	Limited to logging SQLExceptions and console messages.	Administrators understand error messages and take corrective actions as needed.
 
+
 **1.4 Scope Extensions**
 
 **Future extensions could include:**
@@ -80,6 +84,7 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
         
 **Integration with front-end UI:**
         Extend this backend solution to work with web-based user interface as it already has a GUI.
+
         
 **1.5 Prerequisites**
 
@@ -141,6 +146,7 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
         String url = "jdbc:mysql://localhost:3306/nurses_db";
         String user = "root";
         String password = "yourpassword";
+        
 
 **2. CRUD Operations**
 
@@ -218,6 +224,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 
         return false;
     }
+
+
 
 **2.2 Read**
 
@@ -300,6 +308,7 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 
         return patient;
     }
+    
 
 
 **2.3 Update**
@@ -343,8 +352,9 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
             System.out.println("Error updating nurse: " + e.getMessage());
         }
     }
-**2.4 Delete**
-**Delete nurse by ID**
+
+    
+**2.4 Delete nurse by ID**
 
 
       public void deleteId (int id){
@@ -364,6 +374,7 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
             System.out.println("Error deleting nurse: " + e.getMessage());
         }
     }
+    
 
 
 **2.5 Delete patient by ID**
@@ -384,6 +395,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 
         //return deleteId(id);
     }
+
+    
     
 **3. Sources**
 
@@ -426,6 +439,8 @@ https://www.healthit.gov
 UI Design for Database Management Systems: User experience design guidelines for database management interfaces.
 https://youtu.be/whF_Qm1epQ8?si=Vp6jZFSXobHCGW0N
 https://www.nngroup.com/articles/database-design-ui/
+
+
 
 **5. Additional Notes**
     
