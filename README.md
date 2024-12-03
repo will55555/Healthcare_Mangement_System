@@ -425,7 +425,9 @@ https://youtu.be/whF_Qm1epQ8?si=Vp6jZFSXobHCGW0N
 https://www.nngroup.com/articles/database-design-ui/
 
 **5. Additional Notes**
-    Error handling:
+    
+Error handling:
         Use detailed logging and exception handling for production-grade applications.
-    Validation:
+
+Validation:
         Ensure data validity before inserting or updating, especially for dates and unique fields like email.
