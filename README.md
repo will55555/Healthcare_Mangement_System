@@ -120,6 +120,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 **2. CRUD Operations**
 **2.1 Create**
 Nurses
+
+
         public boolean newNurse(Nurses nurse) {
         //Creates new record  by using the connection object to create a new record in the database.
         // Add nurse to database
@@ -152,6 +154,7 @@ Nurses
     }
 
 Patients
+
 
 public boolean newPatient(Patient patient) {
         //Creates new record  by using the connection object to create a new record in the database.
@@ -190,6 +193,7 @@ public boolean newPatient(Patient patient) {
 
 2.2 Read
 Fetch all nurses
+
 
 public List<Nurses> findNurses() {
         List<Nurses> nurses = new LinkedList<>();
@@ -233,6 +237,7 @@ public List<Nurses> findNurses() {
 
 Fetch all patients
 
+
  public List<Patient> findPatient() {
         List<Patient> patient = new LinkedList<>();
 
@@ -270,6 +275,7 @@ Fetch all patients
 
 2.3 Update
 Update nurse by ID
+
 
 public void update (Nurses nurse){
         //Update record in database using an SQL UPDATE statement and execute it using the connection object.
@@ -311,6 +317,7 @@ public void update (Nurses nurse){
 2.4 Delete
 Delete nurse by ID
 
+
 public void deleteId (int id){
         //Deletes record using an SQL DELETE statement and execute it using the connection object.
         try {
@@ -330,7 +337,8 @@ public void deleteId (int id){
     }
 
 
-Delete patient by ID
+2.5 Delete patient by ID
+
 
 public void deleteId (int id){
         //Deletes record using an SQL DELETE statement and execute it using the connection object.
