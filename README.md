@@ -75,8 +75,7 @@ CREATE TABLE Nurses (
 );
 
 Patients:
-
-CREATE TABLE Patients (
+        CREATE TABLE Patients (
     patient_id INT PRIMARY KEY AUTO_INCREMENT,
     First_Name VARCHAR(75) NOT NULL,
     Last_name VARCHAR(75) NOT NULL,
@@ -116,8 +115,7 @@ Database connection setup:
 2. CRUD Operations
 2.1 Create
 Nurses
-
-public boolean newNurse(Nurses nurse) {
+        public boolean newNurse(Nurses nurse) {
         //Creates new record  by using the connection object to create a new record in the database.
         // Add nurse to database
         try (
