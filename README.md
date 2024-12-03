@@ -55,7 +55,7 @@ The application is primarily accessed by administrative personnel responsible fo
 **Java environment:**
 The system is running in a Java environment with the required dependencies (e.g., JDBC driver) installed.
 
-Constraints and Assumptions: Practical Application
+**Constraints and Assumptions:** Practical Application
 Category	Constraints	Assumptions
 Database	Schema must match the documented structure.	Database connection is stable and accessible.
 Input Data	Dates must use YYYY-MM-DD format; emails must follow valid email standards.	Users provide correct and complete data.
@@ -65,8 +65,7 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 **1.4 Scope Extensions**
 
 **Future extensions could include:**
-
-**Advanced search and filtering:**
+      **advanced search and filtering:**
         Add functionality to query nurses and patients based on custom criteria (e.g., certifications, date of birth ranges).
         
 **Bulk operations:**
