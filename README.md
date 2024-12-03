@@ -118,9 +118,10 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
         String password = "yourpassword";
 
 **2. CRUD Operations**
+
 **2.1 Create**
 
-Nurses
+**Nurses**
 
 
         public boolean newNurse(Nurses nurse) {
@@ -155,10 +156,10 @@ Nurses
     }
 
 
-Patients
+**Patients**
 
 
-   public boolean newPatient(Patient patient) {
+      public boolean newPatient(Patient patient) {
         //Creates new record  by using the connection object to create a new record in the database.
         String sql = "INSERT INTO patients (patient_id, First_Name, Last_name,Admission_Date, Date_of_birth, email) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
@@ -193,11 +194,12 @@ Patients
         return false;
     }
 
-2.2 Read
-Fetch all nurses
+**2.2 Read**
+
+**Fetch all nurses**
 
 
-   public List<Nurses> findNurses() {
+      public List<Nurses> findNurses() {
         List<Nurses> nurses = new LinkedList<>();
 
         String sql = "SELECT * FROM Nurses";
@@ -237,10 +239,10 @@ Fetch all nurses
     }
 
 
-Fetch all patients
+**Fetch all patients**
 
 
- public List<Patient> findPatient() {
+       public List<Patient> findPatient() {
         List<Patient> patient = new LinkedList<>();
 
         String sql = "SELECT * FROM patients";
@@ -275,11 +277,11 @@ Fetch all patients
     }
 
 
-2.3 Update
-Update nurse by ID
+**2.3 Update**
+**Update nurse by ID**
 
 
-public void update (Nurses nurse){
+      public void update (Nurses nurse){
         //Update record in database using an SQL UPDATE statement and execute it using the connection object.
         try {
             String sql = "UPDATE Nurses SET First_Name = ?, Last_name = ?, Nurse_License_Type = ?, " +
@@ -316,11 +318,11 @@ public void update (Nurses nurse){
             System.out.println("Error updating nurse: " + e.getMessage());
         }
     }
-2.4 Delete
-Delete nurse by ID
+**2.4 Delete**
+**Delete nurse by ID**
 
 
-public void deleteId (int id){
+      public void deleteId (int id){
         //Deletes record using an SQL DELETE statement and execute it using the connection object.
         try {
             String sql = "DELETE FROM Nurses WHERE user_id = ?";
@@ -339,10 +341,10 @@ public void deleteId (int id){
     }
 
 
-2.5 Delete patient by ID
+**2.5 Delete patient by ID**
 
 
-public void deleteId (int id){
+   public void deleteId (int id){
         //Deletes record using an SQL DELETE statement and execute it using the connection object.
         try {
             String sql = "DELETE FROM Patients WHERE patient_id = ?";
@@ -359,7 +361,7 @@ public void deleteId (int id){
         //return deleteId(id);
     }
     
-3. Sources
+**3. Sources**
     Tutorials:
     https://www.geeksforgeeks.org/simplifying-crud-operation-with-jdbc/
    
@@ -400,9 +402,7 @@ public void deleteId (int id){
     https://youtu.be/whF_Qm1epQ8?si=Vp6jZFSXobHCGW0N
     https://www.nngroup.com/articles/database-design-ui/
 
-
-5. Additional Notes
-
+**5. Additional Notes**
     Error handling:
         Use detailed logging and exception handling for production-grade applications.
     Validation:
