@@ -51,28 +51,28 @@ public class PatientRepo {
     }
 
     public List<Patient> findPatient() {
-        List<Patient> patient = new LinkedList<>();
+        List<Patient> patients = new LinkedList<>();
 
         String sql = "SELECT * FROM patients";
         try (Statement statement = con.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while(resultSet.next()) {
-                Patient patients = new Patient();
-                patients.setPatientId(resultSet.getInt("patient_id"));
-                patients.setFirstN(resultSet.getString("First_Name"));
-                patients.setLastN(resultSet.getString("Last_name"));
-                patients.setPatientDob(resultSet.getString("date_of_birth"));
-                patients.setAdmissionDate(resultSet.getString("admission_date"));
-                patients.setEmail(resultSet.getString("email"));
-                patient.add(patients);
+                Patient patient = new Patient();
+                patient.setPatientId(resultSet.getInt("patient_id"));
+                patient.setFirstN(resultSet.getString("First_Name"));
+                patient.setLastN(resultSet.getString("Last_name"));
+                patient.setPatientDob(resultSet.getString("date_of_birth"));
+                patient.setAdmissionDate(resultSet.getString("admission_date"));
+                patient.setEmail(resultSet.getString("email"));
+                patients.add(patient);
                 // Display each record
-                System.out.println("patient ID: " + patients.getPatientId());
-                System.out.println("First Name: " + patients.getFirstN());
-                System.out.println("Last Name: " + patients.getLastN());
-                System.out.println("License type: " + patients.getPatientDob());
+                System.out.println("patient ID: " + patient.getPatientId());
+                System.out.println("First Name: " + patient.getFirstN());
+                System.out.println("Last Name: " + patient.getLastN());
+                System.out.println("License type: " + patient.getPatientDob());
 
-                System.out.println("certification type: " + patients.getAdmissionDate());
-                System.out.println("Email: " + patients.getEmail());
+                System.out.println("certification type: " + patient.getAdmissionDate());
+                System.out.println("Email: " + patient.getEmail());
                 System.out.println("---------------------------");
             }
             // Close the resources
@@ -81,7 +81,7 @@ public class PatientRepo {
             System.out.println(e.getMessage());
         }
 
-        return patient;
+        return patients;
     }
 
 
@@ -100,9 +100,8 @@ public class PatientRepo {
                 patient.setPatientDob(resultSet.getString("date_of_birth"));
                 patient.setAdmissionDate(resultSet.getString("admission_date"));
                 patient.setEmail(resultSet.getString("email"));
-                //patient.add(patients);
+
                 // Displaying patient details in the console
-                // Display each record
                 System.out.println("patient ID: " + patient.getPatientId());
                 System.out.println("First Name: " + patient.getFirstN());
                 System.out.println("Last Name: " + patient.getLastN());

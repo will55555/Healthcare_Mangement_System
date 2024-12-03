@@ -360,9 +360,9 @@ public class DatabaseEditor extends JFrame {
         });
         nurseToPatientRadioButton.addActionListener(e -> {
             try{
-                //patient.getPatientId();
 
-            JOptionPane.showMessageDialog(null, "Successfull");} catch(Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                   "Success");} catch(Exception ex) {
                 JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
             }
 

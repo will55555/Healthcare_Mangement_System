@@ -8,6 +8,7 @@ import org.WTT.visual.DatabaseEditor;
 
 import javax.swing.*;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 
@@ -223,7 +224,6 @@ public class Main extends JFrame {
                             nurse.setEmail(nurse.getEmail());
                         }
 
-// Update the nurse record in the repository
                         nursesRepository.update(nurse);
                         System.out.println("Nurse details updated successfully.");
                         // displays updated nurse info
@@ -263,7 +263,6 @@ public class Main extends JFrame {
                             patient.setEmail(nurse.getEmail());
                         }
 
-// Update the nurse record in the repository
                         patientRepository.update(patient);
                         System.out.println("patient details updated successfully.");
                         // displays updated nurse info
@@ -289,12 +288,11 @@ public class Main extends JFrame {
                         //nursesRepository.findById(nurse.getUserId());
                         break;
                     case 11:
-                        //try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db", "root", "5945")) {
+
                             NursesRepository assignment = new NursesRepository();
-                            assignment.assignNursesToPatients();
-                       // } catch (SQLException e) {
-                            //System.out.println("Connection failed: " + e.getMessage());
-                       // }
+
+                            assignment.assignNursesToPatients();;
+
 
                         break;
                     case 12:

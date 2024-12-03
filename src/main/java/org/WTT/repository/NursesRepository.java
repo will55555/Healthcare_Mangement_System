@@ -6,9 +6,9 @@
 package org.WTT.repository;
 import org.WTT.configuration.DatabaseConnection;
 import org.WTT.entity.Nurses;
+import org.WTT.entity.Patient;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -50,39 +50,24 @@ public class NursesRepository {
         }
         return false;
     }
-    public Object assignNursesToPatients() {
-       try { /*
-            // Fetch all nurses
-            List<Integer> nurseIds = getIds("Nurses", "user_id");
-
-            // Fetch all patients
-            List<Integer> patientIds = getIds("Patients", "patient_id");
-
-            if (nurseIds.isEmpty() || patientIds.isEmpty()) {
-                System.out.println("No nurses or patients available for assignment.");
-                return;
-            }
-
-            Random random = new Random();
-            for (Integer patientId : patientIds) {
-                // Randomly select a nurse
-                int randomNurseId = nurseIds.get(random.nextInt(nurseIds.size()));
-
-                // Assign nurse to patient
-                assignNurseToPatient(randomNurseId, patientId);
-            }*/
-            String query = """
-                SELECT n.user_id, n.First_Name AS NurseFirstName, n.Last_name AS NurseLastName,
-                       p.patient_id, p.First_Name AS PatientFirstName, p.Last_name AS PatientLastName
-                FROM NursePatientAssignment np
-                JOIN Nurses n ON np.nurse_id = n.user_id
-                JOIN Patients p ON np.patient_id = p.patient_id
-                ORDER BY n.user_id;
-                """;
+    public void assignNursesToPatients() {
+        Nurses nurse = new Nurses();
+        Patient patient = new Patient();
+        try {
+            String  query = """
+        SELECT n.user_id, n.First_Name AS NurseFirstName, n.Last_name AS NurseLastName,
+               p.patient_id, p.First_Name AS PatientFirstName, p.Last_name AS PatientLastName
+        FROM NursePatientAssignment np
+        JOIN Nurses n ON np.nurse_id = n.user_id
+        JOIN Patients p ON np.patient_id = p.patient_id
+        ORDER BY n.user_id;
+        """;
 
             try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nurses_db", "root", "5945");
                  PreparedStatement statement = con.prepareStatement(query);
                  ResultSet resultSet = statement.executeQuery()) {
+                 nurse = new Nurses();
+                 patient = new Patient();
 
                 System.out.println("Nurses Assigned to Patients:");
                 System.out.println("----------------------------------------------------------------------------------------------------------------");
@@ -92,24 +77,27 @@ public class NursesRepository {
                 System.out.println("---------------------------------------------------------------------------------------------------------------");
 
                 while (resultSet.next()) {
-                    int nurseId = resultSet.getInt("user_id");
-                    System.out.println("Nurse ID:");
-                    String nurseFirstName = resultSet.getString("NurseFirstName");
-                    String nurseLastName = resultSet.getString("NurseLastName");
-                    int patientId = resultSet.getInt("patient_id");
-                    String patientFirstName = resultSet.getString("PatientFirstName");
-                    String patientLastName = resultSet.getString("PatientLastName");
+
+                    nurse.setUserId(resultSet.getInt("user_id"));
+
+                    nurse.setFirstN(resultSet.getString("NurseFirstName"));
+
+                    patient.setPatientId(resultSet.getInt("patient_id"));
+
+                    patient.setFirstN(resultSet.getString("PatientFirstName"));
+
+                    patient.setLastN(resultSet.getString("PatientLastName"));
 
 
                     System.out.printf("%-10d %-20s %-20s %-10d %-20s %-20s%n",
-                            nurseId, nurseFirstName, nurseLastName,
-                            patientId, patientFirstName, patientLastName);
+                            nurse.getUserId(), nurse.getFirstN(), nurse.getLastN(),
+                            patient.getPatientId(), patient.getFirstN(), patient.getLastN());
 
 
                     System.out.println("-------------------------------------------------------------------------------------------------------------");
 
-                } }
-
+                }
+            }
 
 
             System.out.println("Nurses assigned to patients successfully.");
@@ -117,30 +105,9 @@ public class NursesRepository {
             System.out.println("Error during assignment: " + e.getMessage());
         }
 
-        return null;
+        //return query;
+        //return ;
     }
-
-    private List<Integer> getIds(String tableName, String idColumn) throws SQLException {
-        List<Integer> ids = new ArrayList<>();
-        String query = "SELECT " + idColumn + " FROM " + tableName;
-        try (PreparedStatement statement = con.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
-                ids.add(resultSet.getInt(idColumn));
-            }
-        }
-        return ids;
-    }
-
-    private void assignNurseToPatient(int nurseId, int patientId) throws SQLException {
-        String insertQuery = "INSERT INTO NursePatientAssignment (nurse_id, patient_id) VALUES (?, ?)";
-        try (PreparedStatement statement = con.prepareStatement(insertQuery)) {
-            statement.setInt(1, nurseId);
-            statement.setInt(2, patientId);
-            statement.executeUpdate();
-        }
-    }
-
 
 
     public List<Nurses> findNurses() {
