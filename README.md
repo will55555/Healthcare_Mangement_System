@@ -59,6 +59,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 **1.5 Prerequisites**
 
    **Database setup:**
+
+   
           Database: nurses_db
           Tables:
             Nurses:
