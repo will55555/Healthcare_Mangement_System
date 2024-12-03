@@ -78,6 +78,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 
 
 **Patients:**
+
+
         CREATE TABLE Patients (
     patient_id INT PRIMARY KEY AUTO_INCREMENT,
     First_Name VARCHAR(75) NOT NULL,
