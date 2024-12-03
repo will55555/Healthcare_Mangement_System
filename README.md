@@ -20,18 +20,17 @@ Error handling:
 Basic error handling is implemented. For production-grade applications, a more robust logging and error-handling mechanism is recommended.
 
 1.3 Assumptions
-
-    Pre-configured database:
-        The MySQL database (nurses_db) and required tables (Nurses, Patients, NursePatientAssignment) are already set up and configured.
-    Connection details:
-        The correct database credentials (username and password) are provided.
-    Data input:
-        Valid data is provided by the user for fields like dates, email addresses, and names.
-        Duplicate data, where constrained (e.g., email), will result in errors unless handled in the application layer.
-    Application usage:
-        The application is primarily accessed by administrative personnel responsible for managing nurse and patient records.
-    Java environment:
-        The system is running in a Java environment with the required dependencies (e.g., JDBC driver) installed.
+Pre-configured database:
+The MySQL database (nurses_db) and required tables (Nurses, Patients, NursePatientAssignment) are already set up and configured.
+Connection details:
+The correct database credentials (username and password) are provided.
+Data input:
+Valid data is provided by the user for fields like dates, email addresses, and names.
+Duplicate data, where constrained (e.g., email), will result in errors unless handled in the application layer.
+Application usage:
+The application is primarily accessed by administrative personnel responsible for managing nurse and patient records.
+Java environment:
+The system is running in a Java environment with the required dependencies (e.g., JDBC driver) installed.
 
 Constraints and Assumptions: Practical Application
 Category	Constraints	Assumptions
@@ -39,6 +38,7 @@ Database	Schema must match the documented structure.	Database connection is stab
 Input Data	Dates must use YYYY-MM-DD format; emails must follow valid email standards.	Users provide correct and complete data.
 Concurrency	Single-threaded operations; no concurrency handling implemented.	Operations are performed sequentially without simultaneous updates to the same records.
 Error Handling	Limited to logging SQLExceptions and console messages.	Administrators understand error messages and take corrective actions as needed.
+
 1.4 Scope Extensions
 
 Future extensions could include:
