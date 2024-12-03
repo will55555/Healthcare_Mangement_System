@@ -5,10 +5,10 @@ This document outlines the CRUD (Create, Read, Update, Delete) operations for ma
 The operations are performed using Java and JDBC to interact with a MySQL database. 
 
 The implementation is designed to:
-   Support essential data operations for nurses and patients.
-   Enable assignment and tracking of nurses to patients.
-   Facilitate data entry, updates, and retrievals.
-   Ensure data integrity and prevent invalid inputs.
+      Support essential data operations for nurses and patients.
+      Enable assignment and tracking of nurses to patients.
+      Facilitate data entry, updates, and retrievals.
+      Ensure data integrity and prevent invalid inputs.
    
 This system serves as a backend and frontend solution for managing healthcare staff and patient information, suitable for small- to medium-scale medical institutions.
 
