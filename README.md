@@ -66,11 +66,13 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 
 **Future extensions could include:**
 
-    **Advanced search and filtering:**
+**Advanced search and filtering:**
         Add functionality to query nurses and patients based on custom criteria (e.g., certifications, date of birth ranges).
-    **Bulk operations:**
+        
+**Bulk operations:**
         Enable batch imports and exports for large datasets.
-    **Role-based access control:**
+        
+**Role-based access control:**
         Implement user authentication and role-based permissions for secure data access.
     **Concurrency handling:**
         Support concurrent read/write operations with transaction management.
