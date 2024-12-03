@@ -8,6 +8,7 @@ import org.WTT.repository.PatientRepo;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 
 @SuppressWarnings("BoundFieldAssignment")
@@ -215,7 +216,8 @@ public class DatabaseEditor extends JFrame {
 
         // Display Nurses
         displayNurseButton.addActionListener(e -> {
-            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db", "root",
+
+            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/nurses_db", "root",
                     "5945");
                  Statement stmt = connection.createStatement();
                  ResultSet resultSet = stmt.executeQuery("SELECT * FROM Nurses")) {
@@ -246,11 +248,23 @@ public class DatabaseEditor extends JFrame {
                 JOptionPane.showMessageDialog(DatabaseEditor.this, scrollPane, "Nurses Information", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
-            }
+            }/*
+            try{
+                //patient.getPatientId();
+
+                JOptionPane.showMessageDialog(null, nursesRepository.findNurses());} catch(Exception ex) {
+                JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
+            }*/
         });
         // Display Nurses
         displayPatientsbutton.addActionListener(e -> {
-            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db", "root",
+            /*try{
+                //patient.getPatientId();
+
+                JOptionPane.showMessageDialog(null, patientRepo.findPatient());} catch(Exception ex) {
+                JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
+            }*/
+            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/nurses_db", "root",
                     "5945");
                  Statement stmt = connection.createStatement();
                  ResultSet resultSet = stmt.executeQuery("SELECT * FROM patients")) {
@@ -357,7 +371,13 @@ public class DatabaseEditor extends JFrame {
         }
         });
         nurseToPatientRadioButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, nursesRepository.assignNursesToPatients());
+            try{
+                //patient.getPatientId();
+
+            JOptionPane.showMessageDialog(null, "Successfull");} catch(Exception ex) {
+                JOptionPane.showMessageDialog(DatabaseEditor.this, "Error: " + ex.getMessage());
+            }
+
 
         });
         updatePatientButton.addActionListener(e -> {

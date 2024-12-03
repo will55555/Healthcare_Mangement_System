@@ -51,7 +51,8 @@ public class NursesRepository {
         return false;
     }
     public Object assignNursesToPatients() {
-        try { /*
+        try {
+            /*
             // Fetch all nurses
             List<Integer> nurseIds = getIds("Nurses", "user_id");
 
@@ -60,7 +61,7 @@ public class NursesRepository {
 
             if (nurseIds.isEmpty() || patientIds.isEmpty()) {
                 System.out.println("No nurses or patients available for assignment.");
-                return;
+                return null;
             }
 
             Random random = new Random();
@@ -70,7 +71,15 @@ public class NursesRepository {
 
                 // Assign nurse to patient
                 assignNurseToPatient(randomNurseId, patientId);
+                System.out.println("Nurses Assigned to Patients:");
+                System.out.println("----------------------------------------------------------------------------------------------------------------");
+                System.out.printf("%-10s %-20s %-20s %-10s %-20s %-20s%n",
+                        "Nurse ID", "Nurse First Name", "Nurse Last Name",
+                        "Patient ID", "Patient First Name", "Patient Last Name");
+                System.out.println("---------------------------------------------------------------------------------------------------------------");
+
             }*/
+
             String query = """
                 SELECT n.user_id, n.First_Name AS NurseFirstName, n.Last_name AS NurseLastName,
                        p.patient_id, p.First_Name AS PatientFirstName, p.Last_name AS PatientLastName
@@ -93,7 +102,6 @@ public class NursesRepository {
 
                 while (resultSet.next()) {
                     int nurseId = resultSet.getInt("user_id");
-                    System.out.println("Nurse ID:");
                     String nurseFirstName = resultSet.getString("NurseFirstName");
                     String nurseLastName = resultSet.getString("NurseLastName");
                     int patientId = resultSet.getInt("patient_id");
@@ -117,6 +125,10 @@ public class NursesRepository {
             System.out.println("Error during assignment: " + e.getMessage());
         }
 
+        return null;
+    }
+    public Object displayNursePatientAssignment(){
+        assignNursesToPatients();
         return null;
     }
 

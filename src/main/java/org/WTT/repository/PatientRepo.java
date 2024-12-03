@@ -65,8 +65,6 @@ public class PatientRepo {
                 patients.setAdmissionDate(resultSet.getString("admission_date"));
                 patients.setEmail(resultSet.getString("email"));
                 patient.add(patients);
-                //int columnsNumber = resultSet.getColumnCount();
-                //patient = null;
                 // Display each record
                 System.out.println("patient ID: " + patients.getPatientId());
                 System.out.println("First Name: " + patients.getFirstN());
