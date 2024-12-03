@@ -59,9 +59,8 @@ Error Handling	Limited to logging SQLExceptions and console messages.	Administra
 **1.5 Prerequisites**
 
    **Database setup:**
-      **Database:** nurses_db
-      ** Tables:**
-      
+          Database: nurses_db
+          Tables:
             Nurses:
             CREATE TABLE Nurses (
     nurse_id INT PRIMARY KEY AUTO_INCREMENT,
