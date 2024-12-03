@@ -40,9 +40,9 @@ public class DatabaseEditor extends JFrame {
     private JButton findpatientButton;
     private JButton updatePatientButton;
     private JButton deletePatientButton;
-    //private JLabel patientadminLabel;
+    private JLabel patientadminLabel;
     private JTextField adminDatetextField;
-   // private JLabel patientDoblabel;
+   private JLabel patientDoblabel;
     private JTextField dobtextField;
     private JRadioButton nurseToPatientRadioButton;
     public static Connection con;
