@@ -18,15 +18,28 @@ This system serves as a backend and frontend solution for managing healthcare st
 
 **1.2 Constraints**
 
-Database schema: The implementation assumes the existence of a predefined MySQL database schema with the following tables: Nurses, Patients, and NursePatientAssignment.
-Unique constraints:Nurses and patients must have unique email addresses.
-The user_id and patient_id fields are primary keys and must be unique.
-Data format:Dates must follow the YYYY-MM-DD format for both input and storage.
-The database fields are case-sensitive for string comparisons.
+Database schema: 
+      The implementation assumes the existence of a predefined MySQL database schema with the following tables: Nurses, Patients, and NursePatientAssignment.
+      
+Unique constraints:
+
+      Nurses and patients must have unique email addresses.
+      
+      The user_id and patient_id fields are primary keys and must be unique.
+      
+Data format:
+
+      Dates must follow the YYYY-MM-DD format for both input and storage.
+      
+      The database fields are case-sensitive for string comparisons.
+      
 Database size:
-The system is designed for small- to medium-scale institutions and may not be optimized for databases with millions of records.
+      
+      The system is designed for small- to medium-scale institutions and may not be optimized for databases with millions of records.
+      
 Error handling:
-Basic error handling is implemented. For production-grade applications, a more robust logging and error-handling mechanism is recommended.
+
+      Basic error handling is implemented. For production-grade applications, a more robust logging and error-handling mechanism is recommended.
 
 **1.3 Assumptions**
 
