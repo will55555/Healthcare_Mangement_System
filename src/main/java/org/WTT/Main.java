@@ -61,7 +61,7 @@ public class Main extends JFrame {
                         | 7) Update nurse record                |
                         | 8) Update patient record              |
                         | 9) Delete nurse record                |
-                        | 10) Delete patient record              |
+                        | 10) Delete patient record             |
                         | 11) Nurse/patient assignment          |
                         | 12) Exit the program                  |
                         *=======================================*

@@ -51,8 +51,8 @@ public class NursesRepository {
         return false;
     }
     public void assignNursesToPatients() {
-        Nurses nurse = new Nurses();
-        Patient patient = new Patient();
+        Nurses nurse;
+        Patient patient;
         try {
             String  query = """
         SELECT n.user_id, n.First_Name AS NurseFirstName, n.Last_name AS NurseLastName,
